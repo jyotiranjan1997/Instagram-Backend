@@ -1,6 +1,5 @@
-require("dotenv").config();
+
 const bcrypt = require("bcrypt");
-const salt = process.env.saltRounds;
 const privateKey = process.env.privateKey;
 const { User } = require("../model/user");
 var jwt = require("jsonwebtoken");
