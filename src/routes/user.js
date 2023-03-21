@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const bcrypt = require("bcrypt");
 const userRoute = express.Router();
@@ -56,7 +57,7 @@ userRoute.get("/", UserVerifyMiddleware, async (req, res) => {
 
 userRoute.get("/findFrineds", UserVerifyMiddleware, async (req, res) => {
   const { user_id } = req.body;
-  
+
   try {
     let users = await User.find().limit(20);
     res.status(200).json(users);

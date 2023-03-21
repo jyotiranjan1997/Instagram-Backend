@@ -1,6 +1,7 @@
+require("dotenv").config();
 const bcrypt = require("bcrypt");
 const salt = process.env.saltRounds;
-const privateKey=process.env.privateKey
+const privateKey = process.env.privateKey;
 const { User } = require("../model/user");
 var jwt = require("jsonwebtoken");
 // var decoded = jwt.verify(token, "shhhhh");
@@ -37,9 +38,9 @@ const verifyUser = async (req, res, next) => {
 
 // Verify the user or not in backend
 
-const UserVerifyMiddleware = async (req, res,next) => {
+const UserVerifyMiddleware = async (req, res, next) => {
   const { auth } = req.headers;
-  
+
   const valid_auth = auth.split(" ")[1];
 
   jwt.verify(valid_auth, privateKey, function (err, decoded) {
